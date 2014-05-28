@@ -8,20 +8,8 @@
 # All rights reserved - Do Not Redistribute
 #
 
-#cookbook_file "network" do
-#  path "/etc/sysconfig/network"
-#  action :create
-#end
-
 include_recipe 'yum'
-
-package 'java-1.7.0-openjdk' do
-  action :install
-end
-
-yum_package "git" do
-  action :install
-end
+include_recipe 'java'
 
 yum_repository 'thoughtworks' do
     baseurl 'http://download01.thoughtworks.com/go/yum/no-arch'
