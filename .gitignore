@@ -4,3 +4,5 @@ go-agent-14.1.0-18882.noarch.rpm
 go-server-14.1.0-18882.noarch.rpm
 cookbooks/java
 cookbooks/yum
+go-cookbooks.sublime-project
+go-cookbooks.sublime-workspace

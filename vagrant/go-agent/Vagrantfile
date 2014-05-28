@@ -29,8 +29,12 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.provision "shell", inline: "sudo service iptables stop"
   config.vm.provision "shell", inline: "chkconfig iptables off"
 
+  root = File.absolute_path(File.dirname(__FILE__))
+
   config.vm.provision "chef_solo" do |chef|
       chef.log_level = :debug
+      #chef.environment = "prod"
+      #chef.environments_path = root + "/cookbooks/go-agent/environments"
       chef.add_recipe "go-agent"
     end
 
