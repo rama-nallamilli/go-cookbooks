@@ -1,3 +1,6 @@
 [submodule "cookbooks/java"]
 	path = cookbooks/java
-	url = git@github.com:socrata-cookbooks/java.git
+	url = https://github.com/socrata-cookbooks/java.git
+[submodule "cookbooks/yum"]
+	path = cookbooks/yum
+	url = https://github.com/opscode-cookbooks/yum.git
