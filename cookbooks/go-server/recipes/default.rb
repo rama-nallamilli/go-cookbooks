@@ -15,9 +15,15 @@ yum_repository 'thoughtworks' do
     action :create
 end
 
-package "go-server" do
-  source "/vagrant/go-server-14.1.0-18882.noarch.rpm"
-  action :install
+if(node[:go][:server][:install] == "local") 
+  package "go-server" do
+    source "/vagrant/go-server-14.1.0-18882.noarch.rpm"
+    action :install
+  end
+else
+  yum_package "go-server" do
+    action :install
+  end
 end
 
 template "/etc/default/go-server" do
@@ -32,10 +38,5 @@ template "/etc/default/go-server" do
 end
 
 service "go-server" do
-    action :restart
+  action :restart
 end
-
-#Use yum to install, using package in vagrant file for local initially.
-#yum_package "go-server" do
-#  action :install
-#end
