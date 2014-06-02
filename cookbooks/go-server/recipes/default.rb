@@ -9,23 +9,17 @@
 include_recipe 'yum'
 include_recipe 'java'
 
-
-
-if(node[:go][:server][:install] == "local") 
-  
+if node[:go][:server][:install] == "local"
   package "go-server" do
     source "/vagrant/go-server-14.1.0-18882.noarch.rpm"
     action :install
   end
-
-else if(node[:go][:server][:install] == "package")
-
+elsif node[:go][:server][:install] == "package"
   yum_repository 'thoughtworks' do
     baseurl 'http://download01.thoughtworks.com/go/yum/no-arch'
     gpgcheck false
     action :create
   end
-
   yum_package "go-server" do
     action :install
   end
